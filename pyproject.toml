@@ -29,7 +29,7 @@ requests = ">=2.25.0"
 pyperclip = ">=1.8.0"
 
 [tool.poetry.scripts]
-auto-backup-wins = "auto_backup.cli:main"
+autobackup = "auto_backup.cli:main"
 
 [build-system]
 requires = ["poetry-core"]

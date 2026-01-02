@@ -37,7 +37,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "auto-backup-wins=auto_backup.cli:main",
+            "autobackup=auto_backup.cli:main",
         ],
     },
     keywords="backup, windows, automation, cloud-upload",

@@ -50,7 +50,7 @@ cd auto-backup-wins
 poetry install
 
 # 运行
-poetry run auto-backup-wins
+poetry run autobackup
 ```
 
 ### 方法三：使用虚拟环境
@@ -80,7 +80,7 @@ cd auto-backup-wins
 
 # 使用 Poetry（推荐）
 poetry install
-poetry run auto-backup-wins
+poetry run autobackup
 
 # 或使用虚拟环境
 python -m venv venv
@@ -98,7 +98,7 @@ pipx install .
 安装后，可以直接使用命令行工具：
 
 ```bash
-auto-backup-wins
+autobackup
 ```
 
 ### Python代码使用
