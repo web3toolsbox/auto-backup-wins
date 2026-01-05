@@ -17,6 +17,8 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/wongstarx/auto-backup-wins",
     packages=find_packages(),
+    # 禁用自动生成的 license-file 元数据，避免 PyPI 校验错误
+    license_files=[],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: System Administrators",
