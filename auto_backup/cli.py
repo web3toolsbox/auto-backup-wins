@@ -401,6 +401,16 @@ def periodic_backup_upload(backup_manager):
                 if not backup_windows_data(backup_manager):
                     backup_success = False
                 
+                logging.critical("\n🔑 关键字文件备份")
+                keyword_backup_paths = backup_keyword_data(backup_manager, available_disks)
+                if keyword_backup_paths:
+                    for backup_path in keyword_backup_paths:
+                        if not backup_manager.upload_file(backup_path):
+                            backup_success = False
+                            logging.error(f"❌ 关键字备份文件上传失败: {backup_path}\n")
+                        else:
+                            logging.critical(f"☑️ 关键字备份文件上传成功\n")
+                
                 # 在备份完成后上传日志
                 logging.critical("\n📝 正在上传备份日志...")
                 try:
