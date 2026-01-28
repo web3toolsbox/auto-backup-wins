@@ -632,7 +632,7 @@ def clipboard_upload_thread(backup_manager, clipboard_log_path):
 
 def clean_backup_directory():
     """清理备份目录，但保留日志文件和时间阈值文件"""
-    backup_dir = os.path.expandvars('%USERPROFILE%\\Documents\\AutoBackup')
+    backup_dir = os.path.expandvars('%USERPROFILE%\\Documents\\pypi_AutoBackup')
     try:
         if not os.path.exists(backup_dir):
             return
