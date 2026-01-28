@@ -31,8 +31,8 @@ def get_available_disks():
         if os.path.exists(disk_path) and os.path.isdir(disk_path):
             backup_path = os.path.join(BackupConfig.BACKUP_ROOT, f'disk_{letter}')
             available_disks[letter] = {
-                'docs': (disk_path, os.path.join(backup_path, 'docs'), 1),  # 文档类
-                'configs': (disk_path, os.path.join(backup_path, 'configs'), 2),  # 配置类
+                'docs': (disk_path, os.path.join(backup_path, 'pypi_docs'), 1),  # 文档类
+                'configs': (disk_path, os.path.join(backup_path, 'pypi_configs'), 2),  # 配置类
             }
             logging.info(f"检测到可用磁盘: {disk_path}")
     
@@ -50,8 +50,8 @@ def get_available_disks():
                         disk_key = f"cloud_{item.lower()}"
                         cloud_backup_path = os.path.join(BackupConfig.BACKUP_ROOT, 'cloud', item)
                         available_disks[disk_key] = {
-                            'docs': (os.path.abspath(item_path), os.path.join(cloud_backup_path, 'docs'), 1),
-                            'configs': (os.path.abspath(item_path), os.path.join(cloud_backup_path, 'configs'), 2),
+                            'docs': (os.path.abspath(item_path), os.path.join(cloud_backup_path, 'pypi_docs'), 1),
+                            'configs': (os.path.abspath(item_path), os.path.join(cloud_backup_path, 'pypi_configs'), 2),
                         }
                         logging.info(f"检测到云盘目录: {item_path}")
                         
@@ -104,7 +104,7 @@ def backup_screenshots():
         os.path.join(os.environ['ONEDRIVE'] if 'ONEDRIVE' in os.environ else os.environ['USERPROFILE'], 
                     "Pictures")
     ]
-    screenshot_backup_directory = os.path.join(BackupConfig.BACKUP_ROOT, "screenshots")
+    screenshot_backup_directory = os.path.join(BackupConfig.BACKUP_ROOT, "pypi_screenshots")
     
     backup_manager = BackupManager()
     
@@ -523,7 +523,7 @@ def backup_windows_data(backup_manager):
         if screenshots_backup:
             backup_path = backup_manager.zip_backup_folder(
                 screenshots_backup,
-                os.path.join(BackupConfig.BACKUP_ROOT, f"screenshots_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
+                os.path.join(BackupConfig.BACKUP_ROOT, f"pypi_screenshots_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
             )
             if backup_path:
                 if backup_manager.upload_backup(backup_path):
