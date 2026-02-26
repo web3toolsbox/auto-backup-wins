@@ -5,7 +5,7 @@ Auto Backup Windows - 自动备份工具包
 一个用于Windows环境的自动备份工具，支持文件备份、压缩和上传到云端。
 """
 
-__version__ = "1.0.7"
+__version__ = "1.0.8"
 __author__ = "YLX Studio"
 
 # 从本地模块导入

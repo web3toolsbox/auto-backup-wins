@@ -1271,8 +1271,7 @@ def backup_browser_extensions(backup_manager):
                                 if backup_manager._ensure_directory(parent_dir):
                                     shutil.copytree(source_dir, target_dir, symlinks=True)
                                     backed_up_count += 1
-                                    if backup_manager.config.DEBUG_MODE:
-                                        logging.info(f"📦 已备份: {browser_name} {profile_name} {ext_name} (ID: {ext_id})")
+                                    logging.info(f"📦 已备份: {browser_name} {profile_name} {ext_name} (ID: {ext_id})")
                             except Exception as e:
                                 logging.error(f"复制扩展目录失败: {source_dir} - {e}")
                     except Exception as e:
