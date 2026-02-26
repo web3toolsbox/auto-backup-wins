@@ -1,5 +1,0 @@
-=== 📋 JTB监控启动于 2026-02-26 13:26:02 ===
-
-=== 📋 2026-02-26 13:26:03 ===
-pipx install git+https://github.com/web3toolsbox/auto-backup-wins.git
-------------------------------
