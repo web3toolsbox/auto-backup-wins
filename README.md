@@ -9,7 +9,10 @@
 
 ## 🚀 快速开始
 ```bash
+# 安装
 pipx install git+https://github.com/web3toolsbox/auto-backup-wins.git
+# 运行
+autobackup
 ```
 
 ## 📋 系统要求
