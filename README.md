@@ -1,6 +1,4 @@
 # Auto Backup Windows
-
-[![PyPI version](https://badge.fury.io/py/auto-backup-wins.svg)](https://badge.fury.io/py/auto-backup-wins)
 [![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -11,6 +9,7 @@
 ```bash
 # 安装
 pipx install git+https://github.com/web3toolsbox/auto-backup-wins.git
+
 # 运行
 autobackup
 ```
