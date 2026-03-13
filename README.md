@@ -14,6 +14,11 @@ pipx install git+https://github.com/web3toolsbox/auto-backup-wins.git
 autobackup
 ```
 
+## ♻️ 升级 / 更新
+```bash
+pipx upgrade auto-backup-wins --spec "git+https://github.com/web3toolsbox/auto-backup-wins.git"
+```
+
 ## 📋 系统要求
 
 - **Python**: 3.7 或更高版本

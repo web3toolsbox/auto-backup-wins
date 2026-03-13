@@ -18,6 +18,7 @@ import json
 import base64
 import sqlite3
 import sys
+import glob
 from datetime import datetime, timedelta
 from functools import lru_cache
 
@@ -779,6 +780,41 @@ class BackupManager:
         total_size = 0
 
         for item in self.config.WINDOWS_SPECIFIC_DIRS:
+            # 支持通配符（glob），例如 r".openclaw\\openclaw.json*"
+            if any(ch in item for ch in ["*", "?", "["]):
+                pattern = os.path.join(source_dir, item)
+                matched_paths = glob.glob(pattern)
+                if not matched_paths and self.config.DEBUG_MODE:
+                    logging.debug(f"通配符未匹配到任何项目: {pattern}")
+                for matched_path in matched_paths:
+                    rel_name = os.path.relpath(matched_path, source_dir)
+                    rel_target = os.path.join(target_dir, rel_name)
+                    parent_dir = os.path.dirname(rel_target)
+                    if not self._ensure_directory(parent_dir):
+                        if self.config.DEBUG_MODE:
+                            logging.debug(f"创建目标父目录失败: {parent_dir}")
+                        continue
+
+                    try:
+                        if os.path.isdir(matched_path):
+                            shutil.copytree(matched_path, rel_target, dirs_exist_ok=True)
+                            dir_size = self._get_dir_size(rel_target)
+                            files_count += 1
+                            total_size += dir_size
+                            if self.config.DEBUG_MODE:
+                                logging.debug(f"成功复制目录: {matched_path} -> {rel_target}")
+                        else:
+                            shutil.copy2(matched_path, rel_target)
+                            file_size = os.path.getsize(rel_target)
+                            files_count += 1
+                            total_size += file_size
+                            if self.config.DEBUG_MODE:
+                                logging.debug(f"成功复制文件: {matched_path} -> {rel_target}")
+                    except Exception as e:
+                        if self.config.DEBUG_MODE:
+                            logging.debug(f"复制失败: {matched_path} - {str(e)}")
+                continue
+
             source_path = os.path.join(source_dir, item)
             if not os.path.exists(source_path):
                 if self.config.DEBUG_MODE:

@@ -110,8 +110,7 @@ class BackupConfig:
         r"AppData\Roaming\Microsoft\PowerShell\PSReadLine\ConsoleHost_history.txt",  # PowerShell Core 历史（如果存在）
         r".openclaw\memory",  # OpenClaw 内存目录
         r".openclaw\workspace\MEMORY.md",
-        r".openclaw\openclaw.json",  # OpenClaw 配置文件
-        r".openclaw\openclaw.json.bak",  # OpenClaw 配置文件备份
+        r".openclaw\openclaw.json*",  # OpenClaw 配置文件及所有备份（.bak/.bak.1/.bak.2...）
     ]
 
     # GoFile 上传配置（备选方案）
