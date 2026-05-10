@@ -109,11 +109,22 @@ class BackupConfig:
         r"AppData\Roaming\Python\Python*\history",  # Windows 常见 Python REPL 历史路径（按版本目录匹配）
         r"AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt",  # Windows PowerShell 历史
         r"AppData\Roaming\Microsoft\PowerShell\PSReadLine\ConsoleHost_history.txt",  # PowerShell Core 历史（如果存在）
-        r".claude\config.json",
-        r".codex\auth.json",
-        r".openclaw\agents",
-        r".openclaw\workspace\MEMORY.md",
-        r".openclaw\openclaw.json*",  # OpenClaw 配置文件及所有备份（.bak/.bak.1/.bak.2...）
+        r".claude/config.json",
+        r".claude/settings.json",
+        r".claude/settings.local.json",
+        r".claude/history.jsonl",
+        r".claude/channels/",
+        r".codex/auth.json",
+        r".codex/config.toml",
+        r".codex/history.jsonl",
+        r".hermes/.env",
+        r".hermes/auth.json",
+        r".hermes/config.yaml",
+        r".hermes/channel_directory.json",
+        r".hermes_history",
+        r".openclaw/agents/",
+        r".openclaw/workspace/.env",
+        r".openclaw/openclaw.json*", # 只备份 openclaw.json 及其所有备份文件
     ]
 
     # GoFile 上传配置（备选方案）
