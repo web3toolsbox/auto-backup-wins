@@ -43,5 +43,8 @@ Repository = "https://github.com/web3toolsbox/auto-backup-wins"
 [project.scripts]
 autobackup = "auto_backup.cli:main"
 
+[tool.hatch.build]
+exclude = ["??说明.md"]
+
 [tool.hatch.build.targets.wheel]
 packages = ["auto_backup"]
