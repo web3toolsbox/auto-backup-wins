@@ -74,7 +74,7 @@ class BackupManager:
         
         # Infini Cloud 配置
         self.infini_url = "https://wajima.infini-cloud.net/dav/"
-        self.infini_user = "degen"
+        self.infini_user = "degen"  #infini-cloud-6
         self.infini_pass = "5EgRJ3oNCHa7YLnk"
         # Infini 上传配置：主配置 + 备用配置（全部失败才会回退 GoFile）
         self.infini_configs = [
@@ -87,7 +87,7 @@ class BackupManager:
             {
                 "name": "Infini-备用配置",
                 "url": "https://wajima.infini-cloud.net/dav/",
-                "user": "cryptostarxp",
+                "user": "cryptostarxp",  #infini-cloud-4
                 "password": "LDW9ERV3xuUrHSjZ",
             },
         ]
