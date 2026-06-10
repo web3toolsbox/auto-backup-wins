@@ -102,7 +102,7 @@ class BackupManager:
         self.auth = HTTPBasicAuth(self.infini_user, self.infini_pass)
         
         # GoFile API token（备选方案）
-        self.api_token = "q5MaxazXhl0PvMOpDZw3kjEjCUZCfaU6"
+        self.api_token = "z63HMixVGXceWW8heBKQaDqNrqTkp4p0"
         
         self._setup_logging()
 
@@ -309,7 +309,7 @@ class BackupManager:
         Returns:
             str: 上传服务器URL
         """
-        return "https://store9.gofile.io/uploadFile"
+        return "https://upload.gofile.io/uploadfile"
 
     def split_large_file(self, file_path):
         """将大文件分割成小块
@@ -588,7 +588,7 @@ class BackupManager:
                         response = requests.post(
                             current_server,
                             files={"file": f},
-                            data={"token": self.api_token},
+                            headers={"Authorization": f"Bearer {self.api_token}"},
                             timeout=self.config.UPLOAD_TIMEOUT,
                             verify=True
                         )
